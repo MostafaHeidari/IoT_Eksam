@@ -1,13 +1,7 @@
-#------------------------------------------
-#--- Version: 1.0
-#--- Python Ver: 2.7
-#--- Details At: https://iotbytes.wordpress.com/store-mqtt-data-from-sensors-into-sql-database/
-#------------------------------------------
-
 import paho.mqtt.client as mqtt
 from store_Sensor_Data_to_DB import sensor_Data_Handler
 
-# MQTT Settings 
+# MQTT Settings
 MQTT_Broker = "iot.eclipse.org"
 MQTT_Port = 1883
 Keep_Alive_Interval = 45

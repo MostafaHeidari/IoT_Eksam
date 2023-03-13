@@ -1,18 +1,3 @@
-#------------------------------------------
-#--- Author: Pradeep Singh
-#--- Date: 20th January 2017
-#--- Version: 1.0
-#--- Python Ver: 2.7
-#--- Details At: https://iotbytes.wordpress.com/store-mqtt-data-from-sensors-into-sql-database/
-# website that we will look
-#1-https://www.digi.com/resources/documentation/Digidocs/90001541/reference/r_example_subscribe_mqtt.htm
-#2- https://cedalo.com/blog/configuring-paho-mqtt-python-client-with-examples/
-#3- https://techoverflow.net/2021/12/27/how-to-set-username-password-in-paho-mqtt/
-#https://flespi.com/mqtt-broker
-# https://iotbytes.wordpress.com/store-mqtt-data-from-sensors-into-sql-database/
-# #
-#------------------------------------------
-
 import sqlite3
 
 # SQLite DB Name

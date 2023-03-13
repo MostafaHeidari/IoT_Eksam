@@ -1,11 +1,6 @@
-
 import paho.mqtt.client as mqtt
 import sqlite3
 from time import time
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.future import engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 
 DATABASE_FILE = 'BlindDb.db'
 
@@ -37,17 +32,6 @@ def on_message(client, user_data, msg):
         db_conn.commit()
         cursor.close()
 
-
-    # Connect to the database
-    #engine = create_engine('DATABASE_URL')
-    #Session = sessionmaker(bind=engine)
-    #session = Session()
-    # Insert data into the database
-    #record = Data(value=data)
-    #session.add(record)
-    #session.commit()
-    #session.close()
-
 def main():
     db_conn = sqlite3.connect(DATABASE_FILE)
     sql = """
@@ -78,18 +62,5 @@ def main():
     client.subscribe("BlindData/#", 1)
 
     client.loop_forever()
-
-
-# Define the database model
-#Base = declarative_base()
-
-
-#class Data(Base):
-    #__tablename__ = 'data'
-    #id = Column(Integer, primary_key=True)
-    #value = Column(String)
-
-
-#Base.metadata.create_all(engine)
 
 main()
