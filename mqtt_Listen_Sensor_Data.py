@@ -1,6 +1,4 @@
 #------------------------------------------
-#--- Author: Pradeep Singh
-#--- Date: 20th January 2017
 #--- Version: 1.0
 #--- Python Ver: 2.7
 #--- Details At: https://iotbytes.wordpress.com/store-mqtt-data-from-sensors-into-sql-database/
@@ -13,7 +11,7 @@ from store_Sensor_Data_to_DB import sensor_Data_Handler
 MQTT_Broker = "iot.eclipse.org"
 MQTT_Port = 1883
 Keep_Alive_Interval = 45
-MQTT_Topic = "Home/BedRoom/#"
+MQTT_Topic = "BlindData/#"
 
 #Subscribe to all Sensors at Base Topic
 def on_connect(mosq, obj, rc):
