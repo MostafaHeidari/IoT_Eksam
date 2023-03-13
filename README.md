@@ -2,5 +2,4 @@
 
 For detailed instruction please refer to the following link  - 
 
-https://iotbytes.wordpress.com/store-mqtt-data-from-sensors-into-sql-database/
-
+https://lindevs.com/save-mqtt-data-to-sqlite-database-using-python
