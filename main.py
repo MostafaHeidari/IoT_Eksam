@@ -23,12 +23,17 @@ def on_message(client, user_data, msg):
     data = msg.payload.decode('utf-8')
     print(data)
     print(msg.topic)
+    danger = data.split(", ")[0]
+    locations = data.split(", ")[1]
+    print(danger)
+    print(locations)
+
 
     db_conn = user_data['db_conn']
-    if data != "{Low}":
+    if data != "{\"Low\"}" and data != "{\"high\"}":
         sql = 'INSERT INTO blind_data (topic, dangerlevel, location, created_at) VALUES (?, ?, ?, ?)'
         cursor = db_conn.cursor()
-        cursor.execute(sql, (msg.topic, data, data, int(time())))
+        cursor.execute(sql, (msg.topic, danger, locations, int(time())))
         db_conn.commit()
         cursor.close()
 
