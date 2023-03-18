@@ -22,13 +22,13 @@ def on_message(client, user_data, msg):
     # Print the topic to see mistakes
     print(msg.topic)
     # Split the information, so it can be saved in default columns and add it to a method name to be called
-    Danger = data.split(", ")[0]
-    Locations = data.split(", ")[1]
-    DateTime = data.split(", ")[2]
+    danger = data.split(", ")[0]
+    locations = data.split(", ")[1]
+    date_time = data.split(", ")[2]
     # Print the data to see mistakes
-    print(Danger)
-    print(Locations)
-    print(DateTime)
+    print(danger)
+    print(locations)
+    print(date_time)
 
 
     # Connects to the database and performs a database insert operation using the extracted data from the MQTT message.
@@ -36,7 +36,7 @@ def on_message(client, user_data, msg):
     if data != "{\"Low\"}" and data != "{\"high\"}":
         sql = 'INSERT INTO blind_data (Topic, DangerLevel, Location, DateTime) VALUES (?, ?, ?, ?)'
         cursor = db_conn.cursor()
-        cursor.execute(sql, (msg.topic, Danger, Locations, DateTime))
+        cursor.execute(sql, (msg.topic, danger, locations, date_time))
         db_conn.commit()
         cursor.close()
 
@@ -63,7 +63,7 @@ def main():
 
 
     # Set the host and the client for all the data is coming from
-    myhost="mqtt.flespi.io"
+    myhost = "mqtt.flespi.io"
     client = mqtt.Client()
 
     # calls the method that handles the information that is communing in
@@ -73,7 +73,7 @@ def main():
 
     # Connect to MQTT
     # these 3 lines connects and logs in to our MQTT, so we can recvie information form the device
-    client.username_pw_set("T0jLbGxLz6LQVQPXDKFJNPIs17LM1DUKt3lvzG4ZBFDmmi9NQDkriSJ9PlJGOsh5","")
+    client.username_pw_set("T0jLbGxLz6LQVQPXDKFJNPIs17LM1DUKt3lvzG4ZBFDmmi9NQDkriSJ9PlJGOsh5", "")
     client.connect(myhost, 1883)
 
     # to retrieve the database connection object stored in the user data.
