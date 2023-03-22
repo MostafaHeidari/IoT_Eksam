@@ -32,12 +32,11 @@ def on_message(client, user_data, msg):
 
     # Connects to the database and commit the data that is sendt
     db_conn = user_data['db_conn']
-    if data != "{\"Low\"}" and data != "{\"high\"}":
-        sql = 'INSERT INTO blind_data (topic, dangerlevel, location, created_at) VALUES (?, ?, ?, ?)'
-        cursor = db_conn.cursor()
-        cursor.execute(sql, (msg.topic, danger, locations, int(time())))
-        db_conn.commit()
-        cursor.close()
+    sql = 'INSERT INTO blind_data (topic, dangerlevel, location, created_at) VALUES (?, ?, ?, ?)'
+    cursor = db_conn.cursor()
+    cursor.execute(sql, (msg.topic, danger, locations, int(time())))
+    db_conn.commit()
+    cursor.close()
 
 
 # SQLite DB Table Schema
