@@ -24,18 +24,18 @@ def on_message(client, user_data, msg):
     # Split the information, so it can be saved in default columns and add it to a method name to be called
     danger = data.split(", ")[0]
     locations = data.split(", ")[1]
-    date_time = data.split(", ")[2]
+    created_at = data.split(", ")[2]
     # Print the data to see mistakes
     print(danger)
     print(locations)
-    print(date_time)
+    print(created_at)
 
 
     # Connects to the database and performs a database insert operation using the extracted data from the MQTT message.
     db_conn = user_data['db_conn']
-    sql = 'INSERT INTO blind_data (Topic, DangerLevel, Location, DateTime) VALUES (?, ?, ?, ?)'
+    sql = 'INSERT INTO blind_data (Topic, DangerLevel, Location, Created_at) VALUES (?, ?, ?, ?)'
     cursor = db_conn.cursor()
-    cursor.execute(sql, (msg.topic, danger, locations, date_time))
+    cursor.execute(sql, (msg.topic, danger, locations, created_at))
     db_conn.commit()
     cursor.close()
 
@@ -50,7 +50,7 @@ def main():
         Topic TEXT NOT NULL,
         DangerLevel TEXT NOT NULL,
         Location TEXT NOT NULL,
-        DateTime INTEGER NOT NULL
+        Created_at INTEGER NOT NULL
     );
     """
 
